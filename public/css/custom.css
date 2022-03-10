@@ -1,0 +1,8 @@
+.font-family-karla { font-family: karla; }
+.bg-sidebar { background: #030b29; }
+.cta-btn { color: #030b29; }
+.upgrade-btn { background: #ccc; }
+.upgrade-btn:hover { background: #0038fd; }
+.active-nav-link { background: #010511; }
+.nav-item:hover { background: #010511; }
+.account-link:hover { background: #3d68ff; }
