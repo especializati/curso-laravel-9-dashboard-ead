@@ -13,15 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('modules', function (Blueprint $table) {
+        Schema::create('reply_support', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('course_id')->index();
-            $table->string('name');
+            $table->uuid('support_id')->index();
+            $table->uuid('user_id')->nullable();
+            $table->uuid('admin_id')->nullable();
+            $table->text('description');
             $table->timestamps();
 
-            $table->foreign('course_id')
+            $table->foreign('support_id')
                     ->references('id')
-                    ->on('courses');
+                    ->on('supports');
         });
     }
 
@@ -32,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('modules');
+        Schema::dropIfExists('reply_supports');
     }
 };
