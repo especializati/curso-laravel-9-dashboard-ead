@@ -4,9 +4,16 @@
 
 @section('content')
 
+<h1 class="text-3xl text-black pb-6">
+    Usuários
+    <a href="{{ route('users.create') }}" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+        <i class="fas fa-plus"></i>
+    </a>
+</h1>
+
 <div class="w-full mt-12">
     <p class="text-xl pb-3 flex items-center">
-        <i class="fas fa-list mr-3"></i> Table Example
+        #filter
     </p>
     <div class="bg-white overflow-auto">
         <table class="min-w-full leading-normal">
