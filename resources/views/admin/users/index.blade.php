@@ -5,7 +5,7 @@
 @section('content')
 
 @foreach ($users as $user)
-    {{ $user['name'] }}
+    {{ $user->name }}
 @endforeach
 
 @endsection
