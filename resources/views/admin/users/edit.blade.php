@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Cadastrar Novo Usuário')
+@section('title', "Editar o Usuário {$user->name}")
 
 @section('content')
 <h1 class="w-full text-3xl text-black pb-6">
