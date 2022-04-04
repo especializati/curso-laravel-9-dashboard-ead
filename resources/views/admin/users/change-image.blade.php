@@ -10,7 +10,9 @@
 <div class="flex flex-wrap">
     <div class="w-full my-6 pr-0 lg:pr-2">
         <div class="leading-loose">
+
             <form class="p-10 bg-white rounded shadow-xl" action="{{ route('users.update.image', $user->id) }}" method="POST" enctype="multipart/form-data">
+                @include('admin.includes.alerts')
                 @method('PUT')
                 @csrf
                 <div class="mt-2">
