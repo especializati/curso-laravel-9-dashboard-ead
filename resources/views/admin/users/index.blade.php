@@ -12,9 +12,9 @@
 </h1>
 
 <div class="w-full mt-12">
-    <p class="text-xl pb-3 flex items-center">
-        #filter
-    </p>
+
+    @include('admin.includes.form-search', ['routerName' => 'users.index'])
+
     <div class="bg-white overflow-auto">
         <table class="min-w-full leading-normal">
             <thead>

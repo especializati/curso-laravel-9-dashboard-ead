@@ -21,7 +21,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $users = $this->service->getAll(
-            filter: $request->get('filter', '')
+            filter: $request->filter ?? ""
         );
 
         return view('admin.users.index', compact('users'));
