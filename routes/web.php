@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\{
     AdminController,
     CourseController,
+    DashboardController,
     UserController
 };
 use Illuminate\Support\Facades\Route;
