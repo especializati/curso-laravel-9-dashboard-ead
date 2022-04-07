@@ -23,4 +23,9 @@ class CourseController extends Controller
 
         return view('admin.courses.index', compact('courses'));
     }
+
+    public function create()
+    {
+        return view('admin.courses.create');
+    }
 }
