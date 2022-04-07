@@ -19,4 +19,9 @@ class CourseService
 
         return convertItemsOfArrayToObject($courses);
     }
+
+    public function create(array $data)
+    {
+        $this->repository->create($data);
+    }
 }
