@@ -51,4 +51,25 @@ class ModuleController extends Controller
 
         return redirect()->route('modules.index', $courseId);
     }
+
+    public function edit($courseId, $id)
+    {
+        if (!$course = $this->repositoryCourse->findById($courseId))
+            return back();
+
+        if (!$module = $this->repository->findById($id))
+            return back();
+
+        return view('admin/courses/modules/edit-modules', compact('course', 'module'));
+    }
+
+    public function update(Request $request, $courseId, $id)
+    {
+        if (!$this->repositoryCourse->findById($courseId))
+            return back();
+
+        $this->repository->update($id, $request->only('name'));
+
+        return redirect()->route('modules.index', $courseId);
+    }
 }
