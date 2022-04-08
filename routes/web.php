@@ -4,11 +4,20 @@ use App\Http\Controllers\Admin\{
     AdminController,
     CourseController,
     DashboardController,
+    ModuleController,
     UserController
 };
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->group(function () {
+    /**
+     * Modules
+     */
+    Route::resource(
+        name: '/courses/{courseId}/modules',
+        controller: ModuleController::class,
+    );
+
     /**
      * Routes Course
      */
