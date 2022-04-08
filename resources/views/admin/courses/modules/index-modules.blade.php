@@ -13,7 +13,10 @@
 
 <div class="w-full mt-12">
 
-    {{-- @include('admin.includes.form-search', ['routerName' => 'modules.index']) --}}
+    @include('admin.includes.form-search', [
+        'routerName' => 'modules.index',
+        'params' => $course->id
+    ])
 
     <div class="bg-white overflow-auto">
         <table class="min-w-full leading-normal">

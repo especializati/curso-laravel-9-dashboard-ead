@@ -21,12 +21,15 @@ class ModuleController extends Controller
         $this->repository = $repository;
     }
 
-    public function index($courseId)
+    public function index(Request $request, $courseId)
     {
         if (!$course = $this->repositoryCourse->findById($courseId))
             return back();
 
-        $data = $this->repository->getAllByCourseId($courseId);
+        $data = $this->repository->getAllByCourseId(
+            courseId: $courseId,
+            filter: $request->filter ?? ''
+        );
         $modules = convertItemsOfArrayToObject($data);
 
         return view('admin/courses/modules/index-modules', compact('course', 'modules'));
