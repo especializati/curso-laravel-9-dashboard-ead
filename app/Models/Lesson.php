@@ -18,6 +18,13 @@ class Lesson extends Model
         'id' => 'string',
     ];
 
+    /**
+     * Indicates if the model's ID is auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+
     protected $fillable = [
         'module_id', 'name', 'description', 'url', 'video'
     ];

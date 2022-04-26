@@ -9,6 +9,13 @@ class Support extends Model
 {
     use HasFactory;
 
+    /**
+     * Indicates if the model's ID is auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+
     protected $fillable = [
         'status', 'description', 'user_id', 'lesson_id'
     ];

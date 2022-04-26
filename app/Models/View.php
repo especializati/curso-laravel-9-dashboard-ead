@@ -12,4 +12,11 @@ class View extends Model
     protected $fillable = [
         'user_id', 'lesson_id', 'qty'
     ];
+
+    /**
+     * Indicates if the model's ID is auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
 }

@@ -24,6 +24,13 @@ class Module extends Model
         'id' => 'string',
     ];
 
+    /**
+     * Indicates if the model's ID is auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+
     public function course()
     {
         return $this->belongsTo(Course::class);
