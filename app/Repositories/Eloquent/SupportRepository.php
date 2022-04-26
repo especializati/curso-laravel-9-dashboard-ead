@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\Models\Course as Model;
+use App\Models\Support as Model;
 use App\Repositories\SupportRepositoryInterface;
 
 class SupportRepository implements SupportRepositoryInterface
@@ -16,16 +16,12 @@ class SupportRepository implements SupportRepositoryInterface
 
     public function getByStatus(string $status): array
     {
-        $admins = $this->model
-                        ->where(function ($query) use ($status) {
-                            if ($status) {
-                                $query->orWhere('name', 'LIKE', "%{$status}%");
-                            }
-                        })
-                        //->with('')
+        $supports = $this->model
+                        ->where('status', $status)
+                        ->with(['user', 'lesson'])
                         ->get();
 
-        return $admins->toArray();
+        return $supports->toArray();
     }
 
     public function findById(string $id): object|null

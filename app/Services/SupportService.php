@@ -15,6 +15,8 @@ class SupportService
 
     public function getSupports(string $status = 'P')
     {
-        return $this->repository->getByStatus($status);
+        $data = $this->repository->getByStatus($status);
+
+        return convertItemsOfArrayToObject($data);
     }
 }
