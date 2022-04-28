@@ -33,6 +33,29 @@
             <div class="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
 
                 @foreach ($support->replies as $reply)
+                    <div class="chat-message">
+                        @if ($reply->user->id == $support->user->id)
+                            <div class="flex items-end">
+                                <div class="flex flex-col space-y-2 max-w-xs mx-2 order-2 items-start">
+                                    <div><span class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">
+                                        {{ $reply->description }}
+                                    </span></div>
+                                </div>
+                                <img src="{{ $reply->user->image ? url("storage/{$support->user->image}") : url('images/user.png') }}" class="w-6 h-6 rounded-full order-1">
+                            </div>
+                        @else
+                            <div class="flex items-end justify-end">
+                                <div class="flex flex-col space-y-2 max-w-xs mx-2 order-1 items-end">
+                                <div><span class="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white ">
+                                    {{ $reply->description }}
+                                </span></div>
+                                </div>
+                                <img src="{{ $reply->user->image ? url("storage/{$support->user->image}") : url('images/user.png') }}" alt="My profile" class="w-6 h-6 rounded-full order-2">
+                            </div>
+                        @endif
+                    </div>
+                @endforeach
+                {{-- @foreach ($support->replies as $reply)
                     @php
                         $whenRepliesdIsAuthor = $reply->user->id == $support->user->id;
                         $classeChatMessage = $whenRepliesdIsAuthor ? '' : 'justify-end';
@@ -51,7 +74,7 @@
                             <img src="{{ $image }}" class="w-6 h-6 rounded-full {{ $orderImage }}">
                         </div>
                     </div>
-                @endforeach
+                @endforeach --}}
 
             </div>
             <div class="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
