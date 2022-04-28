@@ -34,14 +34,21 @@
 
                 @foreach ($support->replies as $reply)
                     @php
+                        $whenRepliesdIsAuthor = $reply->user->id == $support->user->id;
+                        $classeChatMessage = $whenRepliesdIsAuthor ? '' : 'justify-end';
+                        $bgChat = $whenRepliesdIsAuthor ? 'bg-gray-300 text-gray-600' : 'bg-blue-600 text-white';
 
+                        $orderImage = $whenRepliesdIsAuthor ? 'order-1' : 'order-2';
+                        $orderText = $whenRepliesdIsAuthor ? 'order-2' : 'order-1';
+
+                        $image = $reply->user->image ?  url("storage/{$reply->user->image}") : url('images/user.png');
                     @endphp
                     <div class="chat-message">
-                        <div class="flex items-end">
-                            <div class="flex flex-col space-y-2 max-w-xs mx-2 order-2 items-start">
-                                <div><span class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">Can be verified on any platform using docker</span></div>
+                        <div class="flex items-end {{ $classeChatMessage }}">
+                            <div class="flex flex-col space-y-2 max-w-xs mx-2 {{ $orderText }} items-start">
+                                <div><span class="px-4 py-2 rounded-lg inline-block rounded-bl-none {{ $bgChat }}">{{ $reply->description }}</span></div>
                             </div>
-                            <img src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144" alt="My profile" class="w-6 h-6 rounded-full order-1">
+                            <img src="{{ $image }}" class="w-6 h-6 rounded-full {{ $orderImage }}">
                         </div>
                     </div>
                 @endforeach
