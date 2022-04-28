@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreReplySupport;
 use App\Repositories\ReplySupportRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class ReplySupportController extends Controller
         $this->repository = $repository;
     }
 
-    public function store(Request $request, $supportId)
+    public function store(StoreReplySupport $request, $supportId)
     {
         $data = $request->only('description', 'support_id');
         $this->repository->createReplyToSupport($data);
