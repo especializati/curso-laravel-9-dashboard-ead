@@ -23,4 +23,9 @@ class SupportController extends Controller
 
         return view('admin.supports.index', compact('supports'));
     }
+
+    public function show($id)
+    {
+        return view('admin.supports.reply-support');
+    }
 }
