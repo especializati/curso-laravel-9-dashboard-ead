@@ -26,6 +26,9 @@ class SupportController extends Controller
 
     public function show($id)
     {
-        return view('admin.supports.reply-support');
+        if (!$support = $this->service->getSupport($id))
+            return back();
+
+        return view('admin.supports.reply-support', compact('support'));
     }
 }

@@ -26,6 +26,8 @@ class SupportRepository implements SupportRepositoryInterface
 
     public function findById(string $id): object|null
     {
-        return $this->model->find($id);
+        return $this->model
+                    ->with(['user', 'lesson', 'replies'])
+                    ->find($id);
     }
 }
