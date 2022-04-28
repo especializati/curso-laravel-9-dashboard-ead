@@ -34,14 +34,17 @@
 
                 @foreach ($support->replies as $reply)
                     <div class="chat-message">
-                        @if ($reply->user->id == $support->user->id)
+                        @php
+                            $user = $reply->user ?? $reply->admin;
+                        @endphp
+                        @if ($user->id == $support->user->id)
                             <div class="flex items-end">
                                 <div class="flex flex-col space-y-2 max-w-xs mx-2 order-2 items-start">
                                     <div><span class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">
                                         {{ $reply->description }}
                                     </span></div>
                                 </div>
-                                <img src="{{ $reply->user->image ? url("storage/{$support->user->image}") : url('images/user.png') }}" class="w-6 h-6 rounded-full order-1">
+                                <img src="{{ $user->image ? url("storage/{$user->image}") : url('images/user.png') }}" class="w-6 h-6 rounded-full order-1">
                             </div>
                         @else
                             <div class="flex items-end justify-end">
@@ -50,7 +53,7 @@
                                     {{ $reply->description }}
                                 </span></div>
                                 </div>
-                                <img src="{{ $reply->user->image ? url("storage/{$support->user->image}") : url('images/user.png') }}" alt="My profile" class="w-6 h-6 rounded-full order-2">
+                                <img src="{{ $user->image ? url("storage/{$user->image}") : url('images/user.png') }}" alt="My profile" class="w-6 h-6 rounded-full order-2">
                             </div>
                         @endif
                     </div>
@@ -79,8 +82,9 @@
             </div>
             <div class="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
             <div class="relative flex">
-                <form action="{{ route('replies.store', $support->id) }}" method="post">
+                <form action="{{ route('replies.store', $support->id) }}" method="post" class="w-full">
                     @csrf
+                    <input type="hidden" name="support_id" value="{{ $support->id }}">
                     <input type="text" name="description" placeholder="Escreva a sua resposta" class="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-2 bg-gray-200 rounded-md py-3">
                     <div class="absolute right-0 items-center inset-y-0 hidden sm:flex">
                         <button type="submit" class="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none">

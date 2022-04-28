@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\Models\Support as Model;
+use App\Models\ReplySupport as Model;
 use App\Repositories\ReplySupportRepositoryInterface;
 
 class ReplySupportRepository implements ReplySupportRepositoryInterface
