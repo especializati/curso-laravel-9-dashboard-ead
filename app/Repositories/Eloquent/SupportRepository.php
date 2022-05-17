@@ -14,11 +14,16 @@ class SupportRepository implements SupportRepositoryInterface
         $this->model = $model;
     }
 
-    public function getByStatus(string $status): array
+    public function getByStatus(string $status, int $page): array
     {
+        $perPage = 15;
+        $offset = ($page - 1) * $perPage;
+
         $supports = $this->model
                         ->where('status', $status)
                         ->with(['user', 'lesson'])
+                        ->offset($offset)
+                        ->limit($perPage)
                         ->get();
 
         return $supports->toArray();

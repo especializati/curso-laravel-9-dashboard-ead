@@ -10,7 +10,18 @@
 
 <div class="w-full mt-12">
 
-    @include('admin.includes.form-search', ['routerName' => 'courses.index'])
+    <form action="" method="get">
+        <div class="mb-3 xl:w-96">
+            <div class="input-group relative flex flex-wrap items-stretch w-full mb-4">
+                <select name="status">
+                    @foreach ($status as $option)
+                        <option value="{{ $option->name }}">{{ $option->value }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <button type="submit">Filtrar</button>
+        </div>
+    </form>
 
     <div class="bg-white overflow-auto">
         <table class="min-w-full leading-normal">
@@ -36,7 +47,7 @@
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 w-10 h-10">
-                                @if ($support->user['image'])
+                                @if (isset($support->user['image']))
                                     <img class="w-full h-full rounded-full"
                                         src="{{ url("storage/{$support->user['image']}") }}"
                                         alt="{{ $support->user['name'] }}" />
@@ -44,7 +55,7 @@
                             </div>
                             <div class="ml-3">
                                 <p class="text-gray-900 whitespace-no-wrap">
-                                    {{ $support->user['name'] }}
+                                    {{ $support->user['name'] ?? '' }}
                                 </p>
                             </div>
                         </div>
