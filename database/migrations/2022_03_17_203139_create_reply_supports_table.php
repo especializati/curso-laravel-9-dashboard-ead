@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('reply_support', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('support_id')->index();
-            $table->uuid('user_id')->nullable();
-            $table->uuid('admin_id')->nullable();
+            $table->uuid('user_id')->index()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->uuid('admin_id')->index()->nullable();
+            $table->foreign('admin_id')->references('id')->on('admins');
             $table->text('description');
             $table->timestamps();
 

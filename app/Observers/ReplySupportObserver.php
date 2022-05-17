@@ -15,8 +15,7 @@ class ReplySupportObserver
      */
     public function creating(ReplySupport $reply)
     {
-        // $reply->admin_id = auth()->user()->id;
-        $reply->user_id = '8d67c8c6-8c7e-47e4-8a33-956220fe253a'; // tmp
+        $reply->admin_id = auth()->user()->id;
         $reply->id = Str::uuid();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Repositories\PaginationInterface;
 use App\Repositories\SupportRepositoryInterface;
 
 class SupportService
@@ -13,11 +14,9 @@ class SupportService
         $this->repository = $repository;
     }
 
-    public function getSupports(string $status = 'P', int $page = 1)
+    public function getSupports(string $status = 'P', int $page = 1): PaginationInterface
     {
-        $data = $this->repository->getByStatus($status, $page);
-
-        return convertItemsOfArrayToObject($data);
+        return $this->repository->getByStatus($status, $page);
     }
 
     public function getSupport(string $id)
