@@ -44,7 +44,7 @@
                         <div class="flex items-center">
                             <div class="flex-shrink-0 w-10 h-10">
                                 <img class="w-full h-full rounded-full"
-                                    src="{{ $admin->image ? url("storage/{$admin->image}") : url('images/user.png') }}"
+                                    src="{{ $admin->image ?? url('images/user.png') }}"
                                     alt="{{ $admin->name }}" />
                             </div>
                             <div class="ml-3">

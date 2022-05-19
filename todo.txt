@@ -1,0 +1,19 @@
+Autenticação (RouteServiceProvider corrigir rota de redirecionamento)
+Mudar o guard para admin
+Formulário Pesquisa da Página de Suportes
+Corrigir FKs na tabela reply_support
+Corrigir Relacionamento Supports model ReplySupport
+ReplySupportObserver pegar usuário autenticado
+Paginar Dados
+Criar Presenter Pagination
+Exibir Opções de Paginação
+Falar Sobre XSS
+
+---
+Armazenar Imagens na GCS
+	- Criar projeto
+	- Criar bucket (padrão)
+	- Instalar package: composer require spatie/laravel-google-cloud-storage]
+	- Criar config no filesystems.php
+	- Criar variáveis de ambiente
+	- IAM -> Contas de Serviço
