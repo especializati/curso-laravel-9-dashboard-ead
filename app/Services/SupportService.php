@@ -15,12 +15,12 @@ class SupportService
 
     public function getSupports(string $status = 'P', int $page = 1)
     {
-        $data = $this->repository->getByStatus(
+        return $this->repository->getByStatus(
             status: $status,
             page: $page,
         );
 
-        return convertItemsOfArrayToObject($data);
+        // return convertItemsOfArrayToObject($data);
     }
 
     public function getSupport(string $id)
