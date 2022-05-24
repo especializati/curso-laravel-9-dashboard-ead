@@ -11,7 +11,7 @@
             </a>
         @endforeach
     </nav>
-    <a href="#"
+    <a href="{{ route('logout') }}"
         class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4">
         <i class="fas fa-sign-out-alt mr-3"></i> Sair
     </a>
